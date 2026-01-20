@@ -181,7 +181,7 @@ npm run dev
 Frontend / Full Stack Developer
 📍 India
 
-* GitHub: [https://github.com/your-username](https://github.com/your-username)
+* GitHub: [https://github.com/pratik-prakash-sharma](https://github.com/pratik-prakash-sharma)
 
 ---
 
