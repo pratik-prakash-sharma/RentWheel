@@ -109,6 +109,7 @@ export const checkAvailabilityCar = async (req, res) => {
 export const createBooking = async (req, res) => {
     try {
         const { _id } = req.user
+         const userId = req.user.id
         const { car, pickupDate, returnDate } = req.body
 
         const picked = new Date(pickupDate)
@@ -121,12 +122,17 @@ export const createBooking = async (req, res) => {
             })
         }
 
-        // 🔒 HARD BLOCK overlapping bookings
+        // 2) Prevent booking own car
+        if (car.owner.toString() === userId) {
+            return res.json({success: false, message: 'Owners cannot book their own car' });
+        }
+
+        //  HARD BLOCK overlapping bookings
         const conflict = await Booking.findOne({
             car,
             pickupDate: { $lte: returned },
             returnDate: { $gte: picked },
-            status: { $ne: "cancelled" } // 🔥 blocks pending + confirmed
+            status: { $ne: "cancelled" } //  
         })
 
         if (conflict) {
@@ -150,7 +156,7 @@ export const createBooking = async (req, res) => {
             returnDate: returned,
             price
         })
-        
+
 
         res.json({ success: true, message: "Booking confirmed" })
 
