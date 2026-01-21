@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Title from '../../components/owner/Title'
-import { assets } from '../../assets/assets'
+import { assets, cityList } from '../../assets/assets'
 import { useAppContext } from '../../context/AppContext'
 import toast from 'react-hot-toast'
 
@@ -109,6 +109,7 @@ const AddCar = () => {
               <option value="SUV">SUV</option>
               <option value="Van">Van</option>
             </select>
+
           </div>
         </div>
 
@@ -143,12 +144,18 @@ const AddCar = () => {
         {/* Car Location */}
         <div className='flex flex-col w-full'>
           <label>Location</label>
-          <select onChange={e => setCar({ ...car, location: e.target.value })} value={car.location} className='px-3 py-2 mt-1 border border-borderColor rounded-md outline-none'>
+          {/* <select onChange={e => setCar({ ...car, location: e.target.value })} value={car.location} className='px-3 py-2 mt-1 border border-borderColor rounded-md outline-none'>
             <option value="">Select Location</option>
             <option value="New York">New York</option>
             <option value="Los Angeles">Los Angeles</option>
             <option value="Houston">Houston</option>
             <option value="Chicago">Chicago</option>
+          </select> */}
+          <select required onChange={e => setCar({ ...car, location: e.target.value })} value={car.location}>
+            <option value="">Select Location</option>
+            {cityList.map((city) => {
+              return <option key={city} value={city}>{city}</option>
+            })}
           </select>
         </div>
 
@@ -161,7 +168,7 @@ const AddCar = () => {
 
         <button className='flex items-center gap-2 px-4 py-2.5 mt-4 bg-primary text-white rounded-md font-medium w-max cursor-pointer'>
           <img src={assets.tick_icon} alt="" />
-         {isLoading ? 'Listing...' : 'List Your Car'}
+          {isLoading ? 'Listing...' : 'List Your Car'}
         </button>
       </form>
     </div>
