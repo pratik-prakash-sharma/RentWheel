@@ -2,7 +2,7 @@ import React, { use } from 'react'
 import { assets,} from '../../assets/assets'
 import { Link } from 'react-router-dom'
 import { useAppContext } from '../../context/AppContext'
-
+import { motion } from 'motion/react'
 
 const NavbarOwner = () => {
 

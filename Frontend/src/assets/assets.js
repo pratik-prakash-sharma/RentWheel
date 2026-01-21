@@ -42,11 +42,13 @@ import car_image3 from "./car_image3.png"
 import car_image4 from "./car_image4.png"
 import rentwheel_logo from "./rentwheel_logo.png"
 import maincar from "./maincar.png"
+import profile from "./profile.jpg"
 
 export const cityList = ['Delhi', 'Dehradun', 'Mumbai', 'Goa', 'Rajsthan', 'Haridwar', 'Ujain', 'Bareilly', 'Lucknow']
 
 export const assets = {
     logo,
+    profile,
     maincar,
     rentwheel_logo,
     gmail_logo,
