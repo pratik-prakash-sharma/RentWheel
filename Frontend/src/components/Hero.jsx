@@ -30,7 +30,8 @@ const Hero = () => {
                 initial={{ scale: 0.95, y: 50 }}
                 animate={{ scale: 1, opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                onSubmit={handleSearch} className='flex flex-col md:flex-row items-start md:items-center justify-between p-6 rounded-lg md:rounded-full w-full max-w-80 md:max-w-200 bg-white shadow-[0px_8px_20px_rgba(0,0,0,0,0.1)] '>
+                onSubmit={handleSearch}
+                className='flex flex-col md:flex-row items-center md:items-center justify-between p-6 rounded-lg md:rounded-full w-full max-w-80 md:max-w-200 bg-white shadow-[0px_8px_20px_rgba(0,0,0,0,0.1)] '>
                 <div className='flex flex-col md:flex-row items-start md:items-center gap-10 md:ml-8'>
                     <div className='flex flex-col items-start gap-2'>
                         <select required value={pickupLocation} onChange={(e) => { setPickupLocation(e.target.value) }}>

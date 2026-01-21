@@ -8,12 +8,12 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
 
-            className="flex flex-col bg-light items-center justify-around w-full py-16 text-sm text-gray-800/70 border border-borderColor px-6 md:px-16 lg:px-24 xl:px-32 mt-16">
+            className="flex flex-col bg-light items-center justify-around w-full py-12 text-sm text-gray-800/70 border border-borderColor px-6 md:px-16 lg:px-24 xl:px-32 mt-16">
             <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="flex items-center gap-8">
+            className="flex items-center gap-6">
                 <a href="#" className="font-medium text-gray-500 hover:text-black transition-all">
                     Home
                 </a>
