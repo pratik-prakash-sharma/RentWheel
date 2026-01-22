@@ -109,7 +109,6 @@ export const checkAvailabilityCar = async (req, res) => {
 export const createBooking = async (req, res) => {
     try {
         const { _id } = req.user
-         const userId = req.user.id
         const { car, pickupDate, returnDate } = req.body
 
         const picked = new Date(pickupDate)
@@ -122,8 +121,14 @@ export const createBooking = async (req, res) => {
             })
         }
 
-        // 2) Prevent booking own car
-        if (car.owner.toString() === userId) {
+        // Fetch car data first
+        const carData = await Car.findById(car)
+        if (!carData) {
+            return res.json({success: false, message: 'Car not found' });
+        }
+
+        // Prevent booking own car
+        if (carData.owner.toString() === _id.toString()) {
             return res.json({success: false, message: 'Owners cannot book their own car' });
         }
 
@@ -141,8 +146,6 @@ export const createBooking = async (req, res) => {
                 message: "Car already booked for selected dates"
             })
         }
-
-        const carData = await Car.findById(car)
         const days =
             Math.ceil((returned - picked) / (1000 * 60 * 60 * 24))
 
